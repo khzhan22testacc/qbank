@@ -1,0 +1,114 @@
+{
+  "title": "QBank",
+  "version": "sample-2026-10-25",
+  "questions": [
+    {
+      "id": "sample-cards-001",
+      "system": "Cardiology",
+      "topic": "Aortic stenosis",
+      "stem": "A 74-year-old man presents after two episodes of light-headedness and one brief loss of consciousness while climbing stairs. He also reports exertional chest tightness over the past 3 months.\n\nBP is 128/84 mmHg, HR 76/min and regular. There is a harsh crescendo-decrescendo systolic murmur at the right upper sternal border radiating to both carotids, with a soft single S2. Carotid upstrokes are delayed. ECG shows sinus rhythm with left ventricular hypertrophy.",
+      "lead": "Which of the following is the most appropriate next step?",
+      "options": [
+        { "label": "A", "text": "Exercise treadmill stress test", "explanation": "Stress testing is contraindicated in symptomatic suspected severe aortic stenosis because of the risk of syncope and sudden death." },
+        { "label": "B", "text": "Transthoracic echocardiogram", "explanation": "Confirms the diagnosis and grades severity (peak velocity, mean gradient, valve area) and assesses LV function." },
+        { "label": "C", "text": "48-hour Holter monitor", "explanation": "Useful when arrhythmic syncope is suspected, but the exam points to a structural cause that must be characterized first." },
+        { "label": "D", "text": "CT head without contrast", "explanation": "Exertional syncope with a classic murmur is cardiac until proven otherwise; neuroimaging adds little without focal findings." },
+        { "label": "E", "text": "Tilt-table testing", "explanation": "Evaluates reflex (vasovagal) syncope, which typically does not occur during exertion." }
+      ],
+      "answer": "B",
+      "explanation": "The triad of exertional syncope, angina, and a late-peaking crescendo-decrescendo murmur with a soft S2 and delayed carotid upstrokes suggests severe aortic stenosis. Transthoracic echocardiography is the initial test to confirm and grade severity. Symptomatic severe AS is an indication for valve replacement (surgical or transcatheter).",
+      "source": "Sample question",
+      "tags": ["valvular", "syncope"]
+    },
+    {
+      "id": "sample-id-001",
+      "system": "Infectious Disease",
+      "topic": "Uncomplicated cystitis",
+      "stem": "A 26-year-old woman has had dysuria, urinary frequency and urgency for 2 days. She has no fever, flank pain, vaginal discharge or nausea. She is not pregnant and has no drug allergies. She had one similar episode 3 years ago.\n\nTemperature is 36.8°C. There is mild suprapubic tenderness and no costovertebral angle tenderness. Urine dipstick is positive for leukocyte esterase and nitrites.",
+      "lead": "Which of the following is the most appropriate management?",
+      "options": [
+        { "label": "A", "text": "Ciprofloxacin for 7 days", "explanation": "Fluoroquinolones are reserved for pyelonephritis or when first-line options cannot be used, given adverse effects and resistance concerns." },
+        { "label": "B", "text": "Amoxicillin for 7 days", "explanation": "High rates of E. coli resistance make amoxicillin a poor empiric choice." },
+        { "label": "C", "text": "Nitrofurantoin for 5 days", "explanation": "First-line empiric therapy for acute uncomplicated cystitis in non-pregnant women." },
+        { "label": "D", "text": "Ceftriaxone 1 g IM once, then oral cefixime", "explanation": "Parenteral therapy is unnecessary for uncomplicated lower urinary tract infection." },
+        { "label": "E", "text": "Withhold antibiotics until urine culture results", "explanation": "With typical symptoms and a positive dipstick, empiric treatment is appropriate; culture is not routinely required in uncomplicated cases." }
+      ],
+      "answer": "C",
+      "explanation": "Acute uncomplicated cystitis in a healthy, non-pregnant woman without systemic features is treated empirically. Nitrofurantoin (5 days), TMP-SMX (3 days, if local resistance is low) or fosfomycin (single dose) are first-line choices. Fever, flank pain or CVA tenderness would suggest pyelonephritis and change management.",
+      "source": "Sample question",
+      "tags": ["UTI"]
+    },
+    {
+      "id": "sample-neph-001",
+      "system": "Nephrology",
+      "topic": "Hyponatremia",
+      "stem": "A 67-year-old man with a 50 pack-year smoking history is found to have a sodium of 124 mmol/L on routine bloodwork. He is asymptomatic. He takes no medications. A chest radiograph done last week showed a right hilar mass.\n\nHe appears euvolemic: no orthostasis, normal jugular venous pressure, moist mucous membranes, no edema.\n\nSerum osmolality: 258 mOsm/kg\nUrine osmolality: 480 mOsm/kg\nUrine sodium: 52 mmol/L\nTSH and morning cortisol: normal\nCreatinine: 68 µmol/L",
+      "lead": "Which of the following is the most appropriate initial treatment?",
+      "options": [
+        { "label": "A", "text": "Fluid restriction", "explanation": "First-line treatment for asymptomatic or mildly symptomatic hyponatremia due to SIADH." },
+        { "label": "B", "text": "0.9% sodium chloride infusion", "explanation": "In SIADH the kidney excretes the sodium and retains the water, which can worsen hyponatremia when urine osmolality is high." },
+        { "label": "C", "text": "100 mL bolus of 3% hypertonic saline", "explanation": "Reserved for severe symptoms such as seizures or decreased level of consciousness." },
+        { "label": "D", "text": "Furosemide alone", "explanation": "Loop diuretics are sometimes added to salt tablets in refractory SIADH, not used alone as initial therapy." },
+        { "label": "E", "text": "Hydrochlorothiazide", "explanation": "Thiazides cause or worsen hyponatremia." }
+      ],
+      "answer": "A",
+      "explanation": "Hypotonic hyponatremia with inappropriately concentrated urine (urine osm > 100), high urine sodium, clinical euvolemia, and normal thyroid, adrenal and renal function fits SIADH, here likely paraneoplastic from small cell lung cancer. Asymptomatic chronic SIADH is treated first with fluid restriction. Correct slowly (generally no more than 8 to 10 mmol/L in 24 hours) to avoid osmotic demyelination.",
+      "source": "Sample question",
+      "tags": ["SIADH", "electrolytes"]
+    },
+    {
+      "id": "sample-endo-001",
+      "system": "Endocrinology",
+      "topic": "Diabetic ketoacidosis",
+      "stem": "A 19-year-old man with type 1 diabetes presents with 2 days of vomiting and abdominal pain after running out of insulin. He is drowsy but oriented.\n\nBP 104/62 mmHg, HR 118/min, RR 28/min with deep respirations.\n\nGlucose: 31 mmol/L\nVenous pH: 7.10\nBicarbonate: 8 mmol/L\nAnion gap: 26\nPotassium: 3.0 mmol/L\nSerum β-hydroxybutyrate: elevated\n\nA 1 L bolus of 0.9% saline has been started.",
+      "lead": "Which of the following is the most appropriate next step?",
+      "options": [
+        { "label": "A", "text": "Start an IV insulin infusion at 0.1 units/kg/h", "explanation": "Insulin shifts potassium into cells and can precipitate dangerous hypokalemia when K is below 3.3 mmol/L." },
+        { "label": "B", "text": "Give IV potassium chloride and hold insulin until potassium is at least 3.3 mmol/L", "explanation": "Correct: potassium must be repleted before insulin when the initial value is low." },
+        { "label": "C", "text": "Give IV sodium bicarbonate", "explanation": "Not indicated unless pH is below about 6.9 to 7.0, and it can worsen hypokalemia." },
+        { "label": "D", "text": "Give a 10-unit IV insulin bolus", "explanation": "Any insulin before potassium repletion carries the same risk of life-threatening hypokalemia." },
+        { "label": "E", "text": "Give IV potassium phosphate as the sole electrolyte replacement", "explanation": "Routine phosphate replacement is not recommended; potassium chloride is the priority." }
+      ],
+      "answer": "B",
+      "explanation": "Total body potassium is depleted in DKA even when serum levels are normal or high. With an initial K below 3.3 mmol/L, insulin is held while potassium is replaced, because insulin drives potassium intracellularly and can cause arrhythmias. Fluids continue in parallel. Once K is at least 3.3, start the insulin infusion and continue potassium in the fluids to keep it in the 4 to 5 range.",
+      "source": "Sample question",
+      "tags": ["DKA", "electrolytes"]
+    },
+    {
+      "id": "sample-gi-001",
+      "system": "Gastroenterology",
+      "topic": "Upper GI bleed",
+      "stem": "A 58-year-old man presents with two episodes of hematemesis and black, tarry stools since this morning. He takes naproxen daily for knee osteoarthritis.\n\nHe is pale and diaphoretic. BP 86/52 mmHg, HR 124/min. Abdomen is soft and non-tender. Hemoglobin is 82 g/L.",
+      "lead": "Which of the following is the most appropriate initial step?",
+      "options": [
+        { "label": "A", "text": "Immediate upper endoscopy", "explanation": "Endoscopy should follow, ideally within 24 hours, but an unstable patient is resuscitated first." },
+        { "label": "B", "text": "Two large-bore IV lines and fluid resuscitation, with blood products as needed", "explanation": "Correct: hemodynamic resuscitation takes priority in an unstable upper GI bleed." },
+        { "label": "C", "text": "Oral pantoprazole", "explanation": "IV PPI is reasonable before endoscopy, but oral therapy does not address shock and is not the first priority." },
+        { "label": "D", "text": "CT angiography of the abdomen", "explanation": "Considered for ongoing bleeding when endoscopy fails or the source is not found." },
+        { "label": "E", "text": "Transjugular intrahepatic portosystemic shunt", "explanation": "A rescue option for refractory variceal bleeding; nothing here suggests portal hypertension." }
+      ],
+      "answer": "B",
+      "explanation": "This patient is in hemorrhagic shock from a likely NSAID-related peptic ulcer bleed. The first priority is resuscitation: large-bore IV access, crystalloid, and blood transfusion. A restrictive hemoglobin threshold of about 70 g/L applies to hemodynamically stable patients; in shock, transfusion is guided by ongoing bleeding and hemodynamics rather than a number. IV PPI is started and endoscopy performed after stabilization, ideally within 24 hours.",
+      "source": "Sample question",
+      "tags": ["GI bleed", "shock"]
+    },
+    {
+      "id": "sample-heme-001",
+      "system": "Hematology",
+      "topic": "Heparin-induced thrombocytopenia",
+      "stem": "A 66-year-old man is on postoperative day 8 after a total knee arthroplasty. He has been receiving subcutaneous unfractionated heparin for thromboprophylaxis since surgery. Today his calf is swollen and tender, and compression ultrasound shows a new popliteal vein thrombosis.\n\nPlatelets: 245 × 10⁹/L preoperatively, 230 × 10⁹/L on day 2, 98 × 10⁹/L today.\nHe has no bleeding and takes no other new medications.",
+      "lead": "Which of the following is the most appropriate next step?",
+      "options": [
+        { "label": "A", "text": "Continue heparin and transfuse platelets", "explanation": "Continuing heparin perpetuates HIT, and platelet transfusion is generally avoided absent bleeding." },
+        { "label": "B", "text": "Switch to enoxaparin", "explanation": "LMWH cross-reacts with HIT antibodies and is contraindicated." },
+        { "label": "C", "text": "Stop heparin and start a non-heparin anticoagulant such as argatroban", "explanation": "Correct: HIT is a prothrombotic state requiring therapeutic non-heparin anticoagulation." },
+        { "label": "D", "text": "Stop heparin and start warfarin immediately", "explanation": "Warfarin started during acute HIT can cause venous limb gangrene through protein C depletion; it is started only after platelets recover, overlapped with a non-heparin agent." },
+        { "label": "E", "text": "Stop heparin and observe without anticoagulation", "explanation": "HIT carries a high thrombosis risk, and this patient already has a DVT." }
+      ],
+      "answer": "C",
+      "explanation": "A platelet fall of more than 50% beginning 5 to 10 days after heparin exposure, with new thrombosis and no other cause, gives a high 4Ts score for HIT. Stop all heparin (including flushes) and start a non-heparin anticoagulant such as argatroban, fondaparinux, or in selected stable patients a DOAC, while sending an HIT immunoassay. Avoid warfarin until the platelet count has recovered.",
+      "source": "Sample question",
+      "tags": ["HIT", "thrombosis"]
+    }
+  ]
+}
