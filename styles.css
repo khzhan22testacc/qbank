@@ -183,3 +183,26 @@ tr:last-child td { border-bottom: 0; }
   max-width: calc(100% - 32px); font-size: .92rem; opacity: 0; pointer-events: none; transition: .2s; z-index: 20;
 }
 #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* Source + topic shown after answering */
+.qinfo {
+  margin-top: 10px; padding: 10px 14px; border-radius: 12px;
+  background: var(--card); border: 1px solid var(--line);
+  display: flex; flex-direction: column; gap: 2px; font-size: .92rem;
+}
+.row-src { display: block; }
+
+/* Settings: list of loaded banks */
+.bank-row { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.bank-row:last-of-type { border-bottom: 0; }
+.bank-txt { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.small-btn { min-height: 40px; padding: 0 14px; font-size: .9rem; }
+
+/* Optional per-question feedback */
+.fb .chips .chip { font-size: .88rem; }
+.fb-note {
+  width: 100%; margin-top: 12px; padding: 10px 12px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--bg); resize: vertical;
+  font: inherit; font-size: 16px; /* 16px stops iPhone from zooming in */
+}
+.fb-note:focus { outline: 2px solid var(--accent); outline-offset: -1px; }

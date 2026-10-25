@@ -2,7 +2,7 @@
    Bump CACHE whenever you change index.html, app.js, styles.css or icons,
    so phones pick up the new version. questions.json updates on its own. */
 
-const CACHE = 'qbank-v1';
+const CACHE = 'qbank-v3';
 const SHELL = [
   './',
   './index.html',
