@@ -206,3 +206,10 @@ tr:last-child td { border-bottom: 0; }
   font: inherit; font-size: 16px; /* 16px stops iPhone from zooming in */
 }
 .fb-note:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+
+/* Outside-source links in explanations */
+.exp a { color: var(--accent); overflow-wrap: anywhere; }
+.refs { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--line); font-size: .88rem; }
+.refs-h { font-weight: 600; margin-bottom: 4px; }
+.refs ol { margin: 0; padding-left: 20px; }
+.refs li { margin: 4px 0; }

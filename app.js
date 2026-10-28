@@ -7,7 +7,7 @@
    Progress:  IndexedDB on the device (export/import as JSON)
    ============================================================ */
 
-const APP_VERSION = '0.3.0';
+const APP_VERSION = '0.5.0';
 const SECONDS_PER_Q = 90;                    // timed mode budget per question
 const SRS_DAYS = [3, 7, 14, 30, 60, 120];    // review intervals after consecutive correct answers
 const DAY_MS = 86400000;
@@ -90,8 +90,12 @@ const $app = document.getElementById('app');
 /* ---------------- Helpers ---------------- */
 
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+// Escaped text -> paragraphs, with http(s) links made tappable
+const linkify = html => html.replace(/https?:\/\/[^\s<]+[^\s<.,;:!?)\]'"]/g,
+  url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
 const rich = t => String(t ?? '').trim().split(/\n{2,}/).filter(Boolean)
-  .map(p => `<p>${esc(p).replace(/\n/g, '<br>')}</p>`).join('');
+  .map(p => `<p>${linkify(esc(p)).replace(/\n/g, '<br>')}</p>`).join('');
+const safeUrl = u => /^https?:\/\//i.test(String(u || '')) ? String(u) : '';
 const pct = (n, d) => (d ? Math.round((100 * n) / d) + '%' : '—');
 const mmss = sec => { sec = Math.max(0, Math.round(sec)); return `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, '0')}`; };
 const slug = s => String(s ?? '').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -157,6 +161,9 @@ function normalizeBank(raw, fileName, forcedId) {
       answer,
       explanation: q.explanation || '',
       source: q.source || null,
+      references: (Array.isArray(q.references) ? q.references : [])
+        .filter(r => r && safeUrl(r.url))
+        .map(r => ({ title: String(r.title || r.url), url: safeUrl(r.url), supports: String(r.supports || '') })),
       tags: Array.isArray(q.tags) ? q.tags : [],
     });
   }
@@ -464,7 +471,12 @@ function viewQuiz() {
   const feedback = s.finished || (s.mode === 'tutor' && s.submitted[key]);
   const flagged = !!(state.progress.get(key) || {}).flagged;
 
-  const opts = q.options.map(o => {
+  // Options are shown in this block's shuffled order and lettered A, B, C... by position.
+  // Answers are still stored by the option's original label, so progress/feedback stay consistent.
+  const shown = optionOrder(s, q);
+  const letterOf = lbl => String.fromCharCode(65 + shown.findIndex(o => o.label === lbl));
+
+  const opts = shown.map((o, i) => {
     let cls = 'opt';
     if (chosen === o.label) cls += ' selected';
     if (feedback) {
@@ -474,7 +486,7 @@ function viewQuiz() {
     }
     const exp = feedback && o.explanation ? `<div class="opt-exp">${rich(o.explanation)}</div>` : '';
     return `<button class="${cls}" data-action="choose" data-label="${esc(o.label)}" ${feedback ? 'disabled' : ''}>
-        <span class="lbl">${esc(o.label)}</span><span class="txt">${esc(o.text)}</span>
+        <span class="lbl">${String.fromCharCode(65 + i)}</span><span class="txt">${esc(o.text)}</span>
       </button>${exp}`;
   }).join('');
 
@@ -483,9 +495,10 @@ function viewQuiz() {
   if (feedback) {
     const correctText = q.options.find(o => o.label === q.answer).text;
     let verdict;
-    if (!chosen) verdict = `<div class="verdict skip">Not answered · Answer: ${esc(q.answer)}. ${esc(correctText)}</div>`;
+    const ansLetter = letterOf(q.answer);
+    if (!chosen) verdict = `<div class="verdict skip">Not answered · Answer: ${ansLetter}. ${esc(correctText)}</div>`;
     else if (chosen === q.answer) verdict = `<div class="verdict ok">Correct</div>`;
-    else verdict = `<div class="verdict bad">Incorrect · Answer: ${esc(q.answer)}. ${esc(correctText)}</div>`;
+    else verdict = `<div class="verdict bad">Incorrect · Answer: ${ansLetter}. ${esc(correctText)}</div>`;
     const ref = fmtReference(q.source);
     after = `
       ${verdict}
@@ -496,6 +509,11 @@ function viewQuiz() {
       <section class="card exp">
         <h3>Explanation</h3>
         ${rich(q.explanation) || '<p class="muted">No explanation provided.</p>'}
+        ${(q.references || []).length ? `
+          <div class="refs">
+            <div class="refs-h">Outside sources</div>
+            <ol>${q.references.map(r => `<li><a href="${esc(r.url)}" target="_blank" rel="noopener noreferrer">${esc(r.title)}</a>${r.supports ? `<span class="muted"> · ${esc(r.supports)}</span>` : ''}</li>`).join('')}</ol>
+          </div>` : ''}
         ${ref ? `<div class="src">Reference: ${esc(ref)}</div>` : ''}
       </section>
       ${feedbackBox(key)}`;
@@ -725,15 +743,27 @@ async function fillStorageInfo() {
 
 /* ---------------- Block lifecycle ---------------- */
 
+// The options of q in the order fixed for this block (falls back to the written order)
+function optionOrder(s, q) {
+  const order = s.order && s.order[q.key];
+  if (!Array.isArray(order) || order.length !== q.options.length) return q.options;
+  const byLabel = new Map(q.options.map(o => [o.label, o]));
+  const out = order.map(l => byLabel.get(l)).filter(Boolean);
+  return out.length === q.options.length ? out : q.options;
+}
+
 async function startBlock() {
   const pool = candidates();
   if (!pool.length) return toast('No questions match these filters');
   const n = Math.min(state.home.count, pool.length);
   const ids = shuffle(pool.map(q => q.key)).slice(0, n);
+  // New random option order for every question in every new block
+  const order = Object.fromEntries(ids.map(k => [k, shuffle(state.byKey.get(k).options.map(o => o.label))]));
   state.session = {
     id: Date.now(),
     mode: state.home.mode,
     ids,
+    order,
     answers: {},
     submitted: {},
     idx: 0,

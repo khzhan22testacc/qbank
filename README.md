@@ -47,7 +47,7 @@ The files are then stored inside the app on your phone, work offline, and never 
 
 ## Updating the app
 
-- Changed `index.html`, `app.js`, `styles.css` or icons: bump `CACHE` in `sw.js` (currently `qbank-v3`, so next time `qbank-v4`), push, then open the app once while online and reopen it.
+- Changed `index.html`, `app.js`, `styles.css` or icons: bump `CACHE` in `sw.js` (currently `qbank-v5`, so next time `qbank-v6`), push, then open the app once while online and reopen it.
 - Changed the bundled `questions.json` only: just push. The app checks for a new copy whenever it opens with a connection.
 
 ## Your progress
